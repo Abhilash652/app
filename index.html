@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://127.0.0.1:8000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EquiSight | Bias Inspection Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./index_files/css2" rel="stylesheet">
+  <link rel="stylesheet" href="./index_files/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">
+          <div class="brand-mark">E</div>
+          <div>
+            <p class="eyebrow">Hackathon Prototype</p>
+            <h1>EquiSight</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="pill success">Bias scan active</span>
+          <button class="ghost-button">Export report</button>
+        </div>
+      </nav>
+
+      <section class="hero-grid">
+        <div class="hero-copy">
+          <p class="section-tag">Fair AI Audit Platform</p>
+          <h2>Find hidden unfairness in datasets and models before it harms real people.</h2>
+          <p class="hero-text">
+            EquiSight helps teams inspect training data, measure discrimination risk, compare outcomes across protected groups,
+            and apply practical fixes with a simple, visual workflow.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button">Run fairness audit</button>
+            <button class="secondary-button">View sample case</button>
+          </div>
+          <div class="hero-highlights">
+            <article>
+              <strong>92%</strong>
+              <span>Audit clarity score</span>
+            </article>
+            <article>
+              <strong>4</strong>
+              <span>Fairness metrics tracked</span>
+            </article>
+            <article>
+              <strong>3</strong>
+              <span>Recommended fixes generated</span>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel glass-card">
+          <div class="panel-header">
+            <div>
+              <p class="muted-label">Current analysis</p>
+              <h3>Loan Approval Model</h3>
+            </div>
+            <span class="pill warning">Moderate risk</span>
+          </div>
+
+          <div class="score-ring">
+            <div class="ring-core">
+              <strong>71</strong>
+              <span>Fairness score</span>
+            </div>
+          </div>
+
+          <div class="metric-list">
+            <div>
+              <span>Demographic parity</span>
+              <strong>0.18 gap</strong>
+            </div>
+            <div>
+              <span>Equal opportunity</span>
+              <strong>0.11 gap</strong>
+            </div>
+            <div>
+              <span>Representation health</span>
+              <strong>82%</strong>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </header>
+
+    <main>
+      <section class="section-grid">
+        <article class="glass-card upload-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Workflow</p>
+              <h3>Simple audit path for non-experts</h3>
+            </div>
+            <span class="pill neutral">Accessible</span>
+          </div>
+          <div class="upload-grid">
+            <div class="upload-box">
+              <span class="upload-icon">01</span>
+              <h4>Upload data</h4>
+              <p>Add training data or a sample evaluation dataset.</p>
+            </div>
+            <div class="upload-box">
+              <span class="upload-icon">02</span>
+              <h4>Scan the model</h4>
+              <p>Measure fairness gaps across sensitive groups.</p>
+            </div>
+            <div class="upload-box">
+              <span class="upload-icon">03</span>
+              <h4>Fix issues</h4>
+              <p>Review actionable guidance before deployment.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Key Risks</p>
+              <h3>What the scan found</h3>
+            </div>
+          </div>
+          <div class="risk-stack">
+            <div class="risk-item high">
+              <span class="risk-dot"></span>
+              <div>
+                <strong>Gender approval imbalance</strong>
+                <p>Female applicants are approved less often than male applicants with similar profiles.</p>
+              </div>
+            </div>
+            <div class="risk-item medium">
+              <span class="risk-dot"></span>
+              <div>
+                <strong>Age group under-representation</strong>
+                <p>Applicants above 55 are sparsely represented in training examples.</p>
+              </div>
+            </div>
+            <div class="risk-item low">
+              <span class="risk-dot"></span>
+              <div>
+                <strong>Proxy feature warning</strong>
+                <p>Zip code shows strong correlation with protected demographic patterns.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="glass-card chart-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Group Comparison</p>
+              <h3>Approval rate by demographic group</h3>
+            </div>
+          </div>
+          <div class="bar-chart" id="approval-chart"><div class="bar-row"><span class="bar-label">Men</span><div class="bar-track"><div class="bar-fill" style="width: 84%;"></div></div><span class="bar-value">84%</span></div><div class="bar-row"><span class="bar-label">Women</span><div class="bar-track"><div class="bar-fill" style="width: 69%;"></div></div><span class="bar-value">69%</span></div><div class="bar-row"><span class="bar-label">Age 18-25</span><div class="bar-track"><div class="bar-fill" style="width: 72%;"></div></div><span class="bar-value">72%</span></div><div class="bar-row"><span class="bar-label">Age 26-40</span><div class="bar-track"><div class="bar-fill" style="width: 81%;"></div></div><span class="bar-value">81%</span></div><div class="bar-row"><span class="bar-label">Age 41-55</span><div class="bar-track"><div class="bar-fill" style="width: 78%;"></div></div><span class="bar-value">78%</span></div><div class="bar-row"><span class="bar-label">Age 56+</span><div class="bar-track"><div class="bar-fill" style="width: 63%;"></div></div><span class="bar-value">63%</span></div></div>
+        </article>
+
+        <article class="glass-card chart-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Metric Radar</p>
+              <h3>Fairness metric overview</h3>
+            </div>
+          </div>
+          <div class="radar-wrapper">
+            <div class="radar-grid"></div>
+            <div class="radar-shape"></div>
+            <ul class="radar-labels">
+              <li>Parity</li>
+              <li>Opportunity</li>
+              <li>Calibration</li>
+              <li>Coverage</li>
+              <li>Explainability</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="table-section glass-card">
+        <div class="card-title-row">
+          <div>
+            <p class="section-tag">Differentiated Table</p>
+            <h3>Fairness audit by subgroup</h3>
+          </div>
+          <span class="pill warning">Needs attention</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Representation</th>
+                <th>Approval Rate</th>
+                <th>False Negative Rate</th>
+                <th>Risk Level</th>
+                <th>Suggested Fix</th>
+              </tr>
+            </thead>
+            <tbody id="group-table"><tr>
+      <td>Women</td>
+      <td>28%</td>
+      <td>69%</td>
+      <td>21%</td>
+      <td><span class="risk-badge risk-high">High</span></td>
+      <td>Rebalance training data and tune decision thresholds.</td>
+    </tr><tr>
+      <td>Men</td>
+      <td>41%</td>
+      <td>84%</td>
+      <td>11%</td>
+      <td><span class="risk-badge risk-low">Low</span></td>
+      <td>Monitor for drift and maintain parity checks.</td>
+    </tr><tr>
+      <td>Age 56+</td>
+      <td>9%</td>
+      <td>63%</td>
+      <td>25%</td>
+      <td><span class="risk-badge risk-high">High</span></td>
+      <td>Collect more examples and review age-correlated proxy features.</td>
+    </tr><tr>
+      <td>Rural applicants</td>
+      <td>14%</td>
+      <td>66%</td>
+      <td>19%</td>
+      <td><span class="risk-badge risk-medium">Medium</span></td>
+      <td>Inspect location features and add subgroup evaluation tests.</td>
+    </tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section-grid bottom-grid">
+        <article class="glass-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Fix Engine</p>
+              <h3>Recommended interventions</h3>
+            </div>
+          </div>
+          <div class="fix-list" id="fix-list"><article class="fix-card">
+      <strong>Balanced data repair</strong>
+      <p>Increase representation for under-sampled groups and remove duplicate patterns that over-amplify dominant groups.</p>
+    </article><article class="fix-card">
+      <strong>Proxy feature review</strong>
+      <p>Flag features such as zip code or income bands that may indirectly encode protected attributes.</p>
+    </article><article class="fix-card">
+      <strong>Threshold tuning by fairness target</strong>
+      <p>Simulate threshold changes to reduce false negative gaps while keeping business accuracy within acceptable limits.</p>
+    </article></div>
+        </article>
+
+        <article class="glass-card">
+          <div class="card-title-row">
+            <div>
+              <p class="section-tag">Why This Wins</p>
+              <h3>Hackathon pitch strengths</h3>
+            </div>
+          </div>
+          <ul class="pitch-list">
+            <li>Explains bias clearly for judges and non-technical audiences.</li>
+            <li>Shows both detection and remediation, which feels product-ready.</li>
+            <li>Uses attractive visuals that make the demo memorable.</li>
+            <li>Can extend to hiring, lending, healthcare, and education use cases.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="./index_files/app.js.download"></script>
+
+
+</body></html>
