@@ -1,0 +1,127 @@
+const approvalData = [
+  { group: "Men", value: 84 },
+  { group: "Women", value: 69 },
+  { group: "Age 18-25", value: 72 },
+  { group: "Age 26-40", value: 81 },
+  { group: "Age 41-55", value: 78 },
+  { group: "Age 56+", value: 63 }
+];
+
+const tableData = [
+  {
+    group: "Women",
+    representation: "28%",
+    approvalRate: "69%",
+    falseNegativeRate: "21%",
+    risk: "High",
+    fix: "Rebalance training data and tune decision thresholds."
+  },
+  {
+    group: "Men",
+    representation: "41%",
+    approvalRate: "84%",
+    falseNegativeRate: "11%",
+    risk: "Low",
+    fix: "Monitor for drift and maintain parity checks."
+  },
+  {
+    group: "Age 56+",
+    representation: "9%",
+    approvalRate: "63%",
+    falseNegativeRate: "25%",
+    risk: "High",
+    fix: "Collect more examples and review age-correlated proxy features."
+  },
+  {
+    group: "Rural applicants",
+    representation: "14%",
+    approvalRate: "66%",
+    falseNegativeRate: "19%",
+    risk: "Medium",
+    fix: "Inspect location features and add subgroup evaluation tests."
+  }
+];
+
+const fixes = [
+  {
+    title: "Balanced data repair",
+    body: "Increase representation for under-sampled groups and remove duplicate patterns that over-amplify dominant groups."
+  },
+  {
+    title: "Proxy feature review",
+    body: "Flag features such as zip code or income bands that may indirectly encode protected attributes."
+  },
+  {
+    title: "Threshold tuning by fairness target",
+    body: "Simulate threshold changes to reduce false negative gaps while keeping business accuracy within acceptable limits."
+  }
+];
+
+function buildBarChart() {
+  const chart = document.getElementById("approval-chart");
+
+  approvalData.forEach((item) => {
+    const row = document.createElement("div");
+    row.className = "bar-row";
+
+    const label = document.createElement("span");
+    label.className = "bar-label";
+    label.textContent = item.group;
+
+    const track = document.createElement("div");
+    track.className = "bar-track";
+
+    const fill = document.createElement("div");
+    fill.className = "bar-fill";
+    fill.style.width = `${item.value}%`;
+
+    const value = document.createElement("span");
+    value.className = "bar-value";
+    value.textContent = `${item.value}%`;
+
+    track.appendChild(fill);
+    row.append(label, track, value);
+    chart.appendChild(row);
+  });
+}
+
+function riskClass(risk) {
+  if (risk === "High") return "risk-high";
+  if (risk === "Medium") return "risk-medium";
+  return "risk-low";
+}
+
+function buildTable() {
+  const tableBody = document.getElementById("group-table");
+
+  tableData.forEach((row) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row.group}</td>
+      <td>${row.representation}</td>
+      <td>${row.approvalRate}</td>
+      <td>${row.falseNegativeRate}</td>
+      <td><span class="risk-badge ${riskClass(row.risk)}">${row.risk}</span></td>
+      <td>${row.fix}</td>
+    `;
+    tableBody.appendChild(tr);
+  });
+}
+
+function buildFixes() {
+  const fixList = document.getElementById("fix-list");
+
+  fixes.forEach((fix) => {
+    const card = document.createElement("article");
+    card.className = "fix-card";
+    card.innerHTML = `
+      <strong>${fix.title}</strong>
+      <p>${fix.body}</p>
+    `;
+    fixList.appendChild(card);
+  });
+}
+
+buildBarChart();
+buildTable();
+buildFixes();
